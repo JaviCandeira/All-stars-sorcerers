@@ -44,6 +44,7 @@ public class MovementController : MonoBehaviour
     private void FixedUpdate()
     {
         Move();
+        
     }
 
     private void SetInputs()
@@ -55,7 +56,15 @@ public class MovementController : MonoBehaviour
     private void Move()
     {
         moveDirection = new Vector3(horizontalInput, 0f, verticalInput);
+        //To stop the object from rotating back to default position
+        if (moveDirection == Vector3.zero)
+        {
+            return;
+        }
+        Quaternion moveRotation = Quaternion.LookRotation(moveDirection);
+        moveRotation = Quaternion.RotateTowards(transform.rotation, moveRotation, 360 * Time.deltaTime);
         rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+        rb.MoveRotation(moveRotation);
     }
 
     private void SpeedControl()
