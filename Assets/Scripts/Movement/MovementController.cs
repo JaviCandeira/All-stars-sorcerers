@@ -62,7 +62,7 @@ public class MovementController : MonoBehaviour
             return;
         }
         Quaternion moveRotation = Quaternion.LookRotation(moveDirection);
-        moveRotation = Quaternion.RotateTowards(transform.rotation, moveRotation, 360 * Time.deltaTime);
+        moveRotation = Quaternion.RotateTowards(transform.rotation, moveRotation, 360 * Time.deltaTime * 2 );
         rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
         rb.MoveRotation(moveRotation);
     }
@@ -73,7 +73,7 @@ public class MovementController : MonoBehaviour
         
         //Limits velocity if required
         //If faster than movement speed
-        if (flatVel.magnitude > moveSpeed)
+        if(flatVel.magnitude > moveSpeed)
         {
             //Calculate max possible velocity and apply it
             Vector3 limitedVel = flatVel.normalized * moveSpeed;
