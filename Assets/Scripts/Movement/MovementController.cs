@@ -7,13 +7,7 @@ public class MovementController : MonoBehaviour
 {
     [Header("Movement")]
     public float moveSpeed;
-    public float groundDrag;
 
-    [Header("Drag")]
-    public float playerHeight;
-    public LayerMask whatIsGround;
-    private bool grounded;
-    
     private float horizontalInput;
     private float verticalInput;
     private Vector3 moveDirection;
@@ -29,16 +23,9 @@ public class MovementController : MonoBehaviour
     void Update()
     {
         //Send a ray to see if player is currently grounded
-        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
+      
         SpeedControl();
         SetInputs();
-
-        
-        //If player is grounded then apply drag
-        if (grounded)
-            rb.drag = groundDrag;
-        else
-            rb.drag = 0;
     }
 
     private void FixedUpdate()
