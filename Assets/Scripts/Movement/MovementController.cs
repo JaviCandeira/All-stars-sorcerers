@@ -6,10 +6,11 @@ using UnityEngine;
 public class MovementController : MonoBehaviour
 {
     [Header("Movement")]
-    public float moveSpeed;
+    public float moveSpeed = 7;
+    public float dashSpeed = 1500;
+    public bool _isDashing;
 
-    private float horizontalInput;
-    private float verticalInput;
+
     private Vector3 moveDirection;
     private Rigidbody rb;
     // Start is called before the first frame update
@@ -19,42 +20,20 @@ public class MovementController : MonoBehaviour
         rb.freezeRotation = true;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        //Send a ray to see if player is currently grounded
-      
-        SpeedControl();
-        SetInputs();
-    }
-
-    private void FixedUpdate()
-    {
-        Move();
-        
-    }
-
-    private void SetInputs()
-    {
-        horizontalInput = Input.GetAxis("Horizontal");
-        verticalInput = Input.GetAxis("Vertical");
-    }
-
-    private void Move()
+    public void Move(float horizontalInput, float verticalInput)
     {
         moveDirection = new Vector3(horizontalInput, 0f, verticalInput);
-        //To stop the object from rotating back to default position
-        if (moveDirection == Vector3.zero)
+        if (moveDirection != Vector3.zero)
         {
-            return;
+            //To stop the object from rotating back to default position
+            Quaternion moveRotation = Quaternion.LookRotation(moveDirection);
+            moveRotation = Quaternion.RotateTowards(transform.rotation, moveRotation, 360 * Time.deltaTime * 2);
+            rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+            rb.MoveRotation(moveRotation);
         }
-        Quaternion moveRotation = Quaternion.LookRotation(moveDirection);
-        moveRotation = Quaternion.RotateTowards(transform.rotation, moveRotation, 360 * Time.deltaTime * 2 );
-        rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
-        rb.MoveRotation(moveRotation);
     }
 
-    private void SpeedControl()
+    public void SpeedControl()
     {
         Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
         
@@ -66,5 +45,11 @@ public class MovementController : MonoBehaviour
             Vector3 limitedVel = flatVel.normalized * moveSpeed;
             rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
         }
+    }
+
+    public void Dash()
+    {
+        rb.AddForce(transform.forward * dashSpeed * Time.deltaTime, ForceMode.Impulse);
+        _isDashing = false;
     }
 }
