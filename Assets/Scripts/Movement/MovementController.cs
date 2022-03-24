@@ -10,27 +10,34 @@ public class MovementController : MonoBehaviour
     public float dashSpeed = 1500;
     public bool _isDashing;
 
-
-    private Vector3 moveDirection;
+    private Animator _animator;
     private Rigidbody rb;
+
+    private static readonly int IsMoving = Animator.StringToHash("isMoving");
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+        _animator = GetComponent<Animator>();
     }
 
     public void Move(float horizontalInput, float verticalInput)
     {
-        moveDirection = new Vector3(horizontalInput, 0f, verticalInput);
+        Vector3 moveDirection = new Vector3(horizontalInput, 0f, verticalInput);
+        float magnitude = Mathf.Clamp01(moveDirection.magnitude) * moveSpeed;
+        moveDirection.Normalize();
+
         if (moveDirection != Vector3.zero)
         {
+            _animator.SetBool(IsMoving, true);
             //To stop the object from rotating back to default position
             Quaternion moveRotation = Quaternion.LookRotation(moveDirection);
-            moveRotation = Quaternion.RotateTowards(transform.rotation, moveRotation, 360 * Time.deltaTime * 2);
-            rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
-            rb.MoveRotation(moveRotation);
+            transform.Translate(moveDirection * magnitude * Time.deltaTime, Space.World);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, moveRotation, 360 * Time.deltaTime * 2);
         }
+        else _animator.SetBool(IsMoving, false);
     }
 
     public void SpeedControl()
@@ -49,7 +56,7 @@ public class MovementController : MonoBehaviour
 
     public void Dash()
     {
-        rb.AddForce(transform.forward * dashSpeed * Time.deltaTime, ForceMode.Impulse);
+        rb.AddForce(transform.forward * dashSpeed * Time.deltaTime, ForceMode.VelocityChange);
         _isDashing = false;
     }
 }
