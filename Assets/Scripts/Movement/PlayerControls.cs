@@ -17,24 +17,11 @@ public class PlayerControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!_isPlayerTwo && Input.GetKeyDown(KeyCode.Space))
-        {
-            _movement._isDashing = true;
-        }
-        if(_isPlayerTwo && Input.GetKeyDown(KeyCode.J))
-        {
-            _movement._isDashing = true;
-        }
-        _movement.SpeedControl();
         SetInputs();
     }
 
     private void FixedUpdate()
     {
-        if (_movement._isDashing)
-        {
-            _movement.Dash();
-        }
         _movement.Move(_horizontalInput, _verticalInput);
     }
 

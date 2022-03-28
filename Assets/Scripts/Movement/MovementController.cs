@@ -7,19 +7,16 @@ public class MovementController : MonoBehaviour
 {
     [Header("Movement")]
     public float moveSpeed = 7;
-    public float dashSpeed = 1500;
-    public bool _isDashing;
 
     private Animator _animator;
-    private Rigidbody rb;
-
+    private Rigidbody body;
     private static readonly int IsMoving = Animator.StringToHash("isMoving");
 
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        rb.freezeRotation = true;
+        body = GetComponent<Rigidbody>();
+        body.freezeRotation = true;
         _animator = GetComponent<Animator>();
     }
 
@@ -38,25 +35,5 @@ public class MovementController : MonoBehaviour
             transform.rotation = Quaternion.RotateTowards(transform.rotation, moveRotation, 360 * Time.deltaTime * 2);
         }
         else _animator.SetBool(IsMoving, false);
-    }
-
-    public void SpeedControl()
-    {
-        Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-        
-        //Limits velocity if required
-        //If faster than movement speed
-        if(flatVel.magnitude > moveSpeed)
-        {
-            //Calculate max possible velocity and apply it
-            Vector3 limitedVel = flatVel.normalized * moveSpeed;
-            rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
-        }
-    }
-
-    public void Dash()
-    {
-        rb.AddForce(transform.forward * dashSpeed * Time.deltaTime, ForceMode.VelocityChange);
-        _isDashing = false;
     }
 }
