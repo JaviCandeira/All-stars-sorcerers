@@ -9,10 +9,11 @@ public class Dash : Spell
 
     public override void Activate(GameObject parent)
     {
-        MovementController movementController = parent.GetComponent<MovementController>();
-        Rigidbody rigidbody = parent.GetComponent<Rigidbody>();
-        
-        rigidbody.AddForce(movementController.transform.forward * dashVelocity * Time.deltaTime, ForceMode.VelocityChange);
-
+        var animator = parent.GetComponent<Animator>();
+        var movementController = parent.GetComponent<MovementController>();
+        var rigidbody = parent.GetComponent<Rigidbody>();
+        animator.Play("Dash");
+        rigidbody.AddForce(movementController.transform.forward * dashVelocity * Time.deltaTime,
+            ForceMode.VelocityChange);
     }
 }

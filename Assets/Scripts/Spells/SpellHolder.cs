@@ -12,7 +12,6 @@ public class SpellHolder : MonoBehaviour
     public float activeFor;
 
     private Animator _animator;
-    private float animSpeed;
     
     enum SpellState
     {
@@ -26,7 +25,6 @@ public class SpellHolder : MonoBehaviour
     private void Start()
     {
         _animator = GetComponent<Animator>();
-        animSpeed = _animator.speed;
     }
 
     // Update is called once per frame
@@ -41,7 +39,6 @@ public class SpellHolder : MonoBehaviour
                     spell.Activate(gameObject);
                     spellState = SpellState.active;
                     activeFor = spell.activeFor;
-                    _animator.speed = 0;
                 }
 
                 break;
@@ -52,7 +49,6 @@ public class SpellHolder : MonoBehaviour
                 }
                 else
                 {
-                    _animator.speed = animSpeed;
                     spellState = SpellState.cooldown;
                     cooldownTime = spell.cooldown;
                 }
