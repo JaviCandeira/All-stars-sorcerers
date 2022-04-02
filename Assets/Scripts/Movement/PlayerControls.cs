@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class PlayerControls : MonoBehaviour
 {
-    public bool _isPlayerTwo;
     private float _horizontalInput;
     private float _verticalInput;
+
     private MovementController _movement;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,15 +28,7 @@ public class PlayerControls : MonoBehaviour
 
     private void SetInputs()
     {
-        if (!_isPlayerTwo)
-        {
-            _horizontalInput = Input.GetAxis("Horizontal");
-            _verticalInput = Input.GetAxis("Vertical");
-        }
-        else
-        {
-            _horizontalInput = Input.GetAxis("Horizontal2");
-            _verticalInput = Input.GetAxis("Vertical2");
-        }
+        _horizontalInput = Input.GetAxis("Horizontal");
+        _verticalInput = Input.GetAxis("Vertical");
     }
 }

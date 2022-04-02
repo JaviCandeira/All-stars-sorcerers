@@ -15,16 +15,4 @@ public class Dash : Spell
         rigidbody.AddForce(movementController.transform.forward * dashVelocity * Time.deltaTime, ForceMode.VelocityChange);
 
     }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
