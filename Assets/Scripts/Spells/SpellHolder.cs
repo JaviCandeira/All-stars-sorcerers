@@ -10,8 +10,6 @@ public class SpellHolder : MonoBehaviour
     
     public float cooldownTime;
     public float activeFor;
-
-    private Animator _animator;
     
     enum SpellState
     {
@@ -21,11 +19,7 @@ public class SpellHolder : MonoBehaviour
     }
 
     private SpellState spellState = SpellState.ready;
-
-    private void Start()
-    {
-        _animator = GetComponent<Animator>();
-    }
+    
 
     // Update is called once per frame
     void Update()

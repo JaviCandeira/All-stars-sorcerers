@@ -302,6 +302,48 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 41.499, y: 0, z: 0}
+--- !u!1 &979599038 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6769086402751366038, guid: 4e48af5ed75d1c044bbcdef780ac7ce7, type: 3}
+  m_PrefabInstance: {fileID: 5850679396813717345}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &979599045 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6249712691068033324, guid: 4e48af5ed75d1c044bbcdef780ac7ce7, type: 3}
+  m_PrefabInstance: {fileID: 5850679396813717345}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &979599048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 979599038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6061098b25cec94093da0d89513336a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spell: {fileID: 11400000, guid: 2c84c6d9bb802f1419baaa810ba18906, type: 2}
+  key: 49
+  cooldownTime: 3
+  activeFor: 0
+--- !u!114 &979599049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 979599038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6696c94f1b01c640b535b76cb7dea90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillShotSpawn: {fileID: 979599045}
+  skillShotForce: 0
+  lifetime: 0
+  projectile: {fileID: 0}
 --- !u!1 &1831103878
 GameObject:
   m_ObjectHideFlags: 0
@@ -393,7 +435,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1001 &5850679396813717345
 PrefabInstance:
@@ -412,7 +454,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 6a26204f743299f408962b34dd7b35b8, type: 2}
     - target: {fileID: 6249712691068033324, guid: 4e48af5ed75d1c044bbcdef780ac7ce7, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6249712691068033324, guid: 4e48af5ed75d1c044bbcdef780ac7ce7, type: 3}
       propertyPath: m_LocalPosition.x
