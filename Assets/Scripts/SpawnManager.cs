@@ -19,6 +19,6 @@ public class SpawnManager : MonoBehaviour
 
     private void SpawnPlayer()
     {
-        Instantiate(PlayerManager.Instance.player, spawnLocation.transform.position, Quaternion.identity);
+        PlayerManager.Instance.player = Instantiate(PlayerManager.Instance.playerPrefab, spawnLocation.transform);
     }
 }
