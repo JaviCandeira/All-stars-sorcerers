@@ -34,6 +34,7 @@ public class MovementController : MonoBehaviour
             transform.Translate(moveDirection * magnitude * Time.deltaTime, Space.World);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, moveRotation, 360 * Time.deltaTime * 2);
         }
-        else _animator.SetBool(IsMoving, false);
+        else 
+        if(_animator) _animator.SetBool(IsMoving, false);
     }
 }
