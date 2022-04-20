@@ -21,4 +21,5 @@ public class IceWheel : Spell
 
         skillShot.Launch();
     }
+
 }
