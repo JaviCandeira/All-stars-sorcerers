@@ -10,8 +10,9 @@ using UnityEngine.Timeline;
 public class Enemy : MonoBehaviour, IDamagable, IKillable
 {
     public float lookRadius = 7f;
-    public Stats stats { get; set; }
-
+    public Stats stats;
+    
+    public int currentHealth { get; set; }
     private GameObject target;
 
     private NavMeshAgent agent;
@@ -27,10 +28,10 @@ public class Enemy : MonoBehaviour, IDamagable, IKillable
     // Start is called before the first frame update
     void Start()
     {
+        currentHealth = stats.maxHealth;
         agent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
         target = PlayerManager.Instance.player;
-        stats = GetComponent<Stats>();
     }
 
     // Update is called once per frame
@@ -64,8 +65,8 @@ public class Enemy : MonoBehaviour, IDamagable, IKillable
 
     public void Damage(int damagePoints)
     {
-        stats.currentHealth -= damagePoints;
-        if (stats.currentHealth <= 0)
+        currentHealth -= damagePoints;
+        if (currentHealth <= 0)
         {
             Perish();
         }

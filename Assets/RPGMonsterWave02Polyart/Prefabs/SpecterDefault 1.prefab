@@ -1894,7 +1894,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6517527154684443340}
   - component: {fileID: 6517527154676946244}
-  - component: {fileID: 4550081447252403702}
   - component: {fileID: 4550081447252403701}
   - component: {fileID: 4550081447252403698}
   m_Layer: 0
@@ -1939,24 +1938,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &4550081447252403702
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6517527154684208942}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abb273d2d80b2944da01db4917c00908, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  maxMana: 200
-  currentHealth: 0
-  currentMana: 0
-  attackDamage: 10
-  attackCooldown: 2
 --- !u!114 &4550081447252403701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1970,6 +1951,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookRadius: 7
+  stats: {fileID: 11400000, guid: 983ae4642915ae74b8c6816ff1c0899e, type: 2}
 --- !u!195 &4550081447252403698
 NavMeshAgent:
   m_ObjectHideFlags: 0

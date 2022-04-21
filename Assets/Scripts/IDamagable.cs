@@ -5,6 +5,7 @@ using UnityEngine;
 
 public interface IDamagable
 {
-  Stats stats { get; set; }
+  int currentHealth { get; set; }
   void Damage(int damagePoints);
+  
 }

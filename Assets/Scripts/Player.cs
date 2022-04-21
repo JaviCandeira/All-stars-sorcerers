@@ -6,18 +6,20 @@ using UnityEngine;
 
 public class Player : MonoBehaviour, IDamagable, IKillable
 {
-    public Stats stats { get; set; }
+    public Stats stats;
+
+    public int currentHealth { get; set; }
 
     private void Start()
     {
-        stats = GetComponent<Stats>();
+        currentHealth = stats.maxHealth;
     }
 
     public void Damage(int damagePoints)
     {
-        stats.currentHealth -= damagePoints;
-        Debug.Log("Oh noooo!: " + stats.currentHealth);
-        if(stats.currentHealth <= 0)
+        currentHealth -= damagePoints;
+        Debug.Log("Oh noooo!: " + currentHealth);
+        if(currentHealth <= 0)
         {
             Perish();
         }

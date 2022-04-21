@@ -148,6 +148,19 @@ MonoBehaviour:
   skillShotForce: 0
   lifetime: 0
   projectile: {fileID: 0}
+--- !u!114 &1379757475610797886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5374121703157284787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f10f69582cb88a42abf8823edcba0b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: {fileID: 11400000, guid: 5e40e91bb7d146e46956351aedb22656, type: 2}
 --- !u!114 &5850679396944919616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,33 +202,3 @@ MonoBehaviour:
   key: 32
   cooldownTime: 0
   activeFor: 0
---- !u!114 &6489529730466122132
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5374121703157284787}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abb273d2d80b2944da01db4917c00908, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  maxMana: 200
-  currentHealth: 0
-  currentMana: 0
-  attackDamage: 0
-  attackCooldown: 0
---- !u!114 &1379757475610797886
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5374121703157284787}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f10f69582cb88a42abf8823edcba0b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
