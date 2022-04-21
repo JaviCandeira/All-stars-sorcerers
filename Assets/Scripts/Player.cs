@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Combat;
 using UnityEngine;
 
 public class Player : MonoBehaviour, IDamagable, IKillable
@@ -24,6 +25,6 @@ public class Player : MonoBehaviour, IDamagable, IKillable
 
     public void Perish()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("Dead");
     }
 }

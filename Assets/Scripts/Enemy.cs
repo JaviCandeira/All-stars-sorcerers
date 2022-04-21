@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Combat;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Serialization;
@@ -17,7 +18,6 @@ public class Enemy : MonoBehaviour, IDamagable, IKillable
 
     private Animator _animator;
 
-    public float attackSpeed;
     private float lastAttackedAt = -999f;
     
 
