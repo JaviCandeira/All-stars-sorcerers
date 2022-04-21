@@ -1,25 +1,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.UIElements;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
-
-[CreateAssetMenu(fileName = "IceWheel", menuName = "Spells/IceWheel")]
-public class IceWheel : Spell
+[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(MeshCollider))]
+public class IceWheel : MonoBehaviour
 {
-    public Rigidbody _vfx;
-    public float skillShotForce = 200f;
-    private SkillShot skillShot;
-
-    public override void Activate(GameObject parent)
-    {
-        skillShot = parent.GetComponent<SkillShot>();
-        skillShot.skillShotForce = skillShotForce;
-        skillShot.projectile = _vfx;
-        skillShot.lifetime = lifeTime;
-
-        skillShot.Launch();
-    }
-
+   private void OnTriggerEnter(Collider other)
+   {
+      if (other.gameObject.CompareTag("Enemy"))
+      {
+         Destroy(gameObject);
+      }
+   }
 }

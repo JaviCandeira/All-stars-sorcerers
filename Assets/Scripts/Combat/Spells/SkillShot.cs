@@ -1,35 +1,25 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Mathematics;
+using UnityEditor.UIElements;
 using UnityEngine;
-using UnityEngine.Serialization;
+using UnityEngine.PlayerLoop;
 
-public class SkillShot : MonoBehaviour
+[CreateAssetMenu(fileName = "New Skillshot", menuName = "Spells/Skillshot")]
+public class Skillshot : Spell
 {
-    public Transform skillShotSpawn;
-    [HideInInspector] public float skillShotForce;
-    [HideInInspector] public float lifetime;
-    [HideInInspector] public Rigidbody projectile;
-    private Quaternion lookRotation;
-    
-    public void Launch()
+    public Rigidbody _vfx;
+    public float skillShotForce = 200f;
+    private SkillshotController skillshotController;
+
+    public override void Activate(GameObject parent)
     {
-        var clonedProjectile = Instantiate(projectile, skillShotSpawn.position + Vector3.up, transform.rotation);
-        clonedProjectile.AddForce(skillShotSpawn.transform.forward * skillShotForce);
-        Destroy(clonedProjectile.gameObject, lifetime);
+        skillshotController = parent.GetComponent<SkillshotController>();
+        skillshotController.skillShotForce = skillShotForce;
+        skillshotController.projectile = _vfx;
+        skillshotController.lifetime = lifeTime;
+
+        skillshotController.Launch();
     }
 
-    private void Update()
-    {
-        RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        
-        if (Physics.Raycast(ray, out hit))
-        {
-            lookRotation = Quaternion.LookRotation(new Vector3(hit.point.x, transform.position.y, hit.point.z));
-        }
-    
-    }
-    
 }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - IceWheel
   - SpawnPoint
+  - Enemy
   layers:
   - Default
   - TransparentFX
