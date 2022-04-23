@@ -145,6 +145,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: 5e40e91bb7d146e46956351aedb22656, type: 2}
+--- !u!114 &4415362580820243662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5374121703157284787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76e65f01b5afcfa44afd895149f109bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillShotSpawn: {fileID: 4746626450421474569}
+  skillShotForce: 0
+  lifetime: 0
+  projectile: {fileID: 0}
 --- !u!114 &5850679396944919616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,19 +202,3 @@ MonoBehaviour:
   key: 32
   cooldownTime: 0
   activeFor: 0
---- !u!114 &4415362580820243662
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5374121703157284787}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76e65f01b5afcfa44afd895149f109bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skillShotSpawn: {fileID: 4746626450421474569}
-  skillShotForce: 0
-  lifetime: 0
-  projectile: {fileID: 0}
