@@ -12,11 +12,12 @@ public class SkillshotController : MonoBehaviour
     [HideInInspector] public float lifetime;
     [HideInInspector] public Rigidbody projectile;
     private Quaternion lookRotation;
+    private Vector3 skillshotDirection;
     
     public void Launch()
     {
-        var clonedProjectile = Instantiate(projectile, skillShotSpawn.position + Vector3.up, transform.rotation);
-        clonedProjectile.AddForce(skillShotSpawn.transform.forward * skillShotForce);
+        var clonedProjectile = Instantiate(projectile, skillShotSpawn.position + Vector3.up, lookRotation);
+        clonedProjectile.AddForce((skillshotDirection - skillShotSpawn.transform.position) * skillShotForce);
         Destroy(clonedProjectile.gameObject, lifetime);
     }
 
@@ -27,7 +28,7 @@ public class SkillshotController : MonoBehaviour
         
         if (Physics.Raycast(ray, out hit))
         {
-            lookRotation = Quaternion.LookRotation(new Vector3(hit.point.x, transform.position.y, hit.point.z));
+            skillshotDirection = new Vector3(hit.point.x, transform.position.y, hit.point.z);
         }
     
     }

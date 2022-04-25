@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: IceWheel
   m_EditorClassIdentifier: 
   name: 
-  cooldown: 0
+  cooldown: 2
   activeFor: 0
   manaCost: 0
-  speed: 0
-  lifeTime: 0
-  _vfx: {fileID: 0}
+  speed: 2
+  lifeTime: 2
+  _vfx: {fileID: 2486084718330607243, guid: e99cf562a8a0fef4a915dc2f0f2d5331, type: 3}
   skillShotForce: 200
