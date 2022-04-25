@@ -70,7 +70,7 @@ public class Enemy : MonoBehaviour, IDamagable, IKillable
         agent.baseOffset = config.baseOffset;
         agent.stoppingDistance = config.stoppingDistance;
         enemyMovement.pathCalcSpeed = config.aiUpdateInterval;
-        (enemyCombat.collider == null ? enemyCombat.GetComponent<SphereCollider>() : enemyCombat.collider).radius = config.attackRadius;
+        enemyCombat.attackDistance = config.attackDistance;
         enemyCombat.attackCooldown = config.attackCooldown;
         enemyCombat.damage = config.attackDamage;
     }

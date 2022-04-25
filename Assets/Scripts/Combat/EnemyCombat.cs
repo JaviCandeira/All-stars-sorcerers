@@ -7,6 +7,7 @@ public class EnemyCombat : MonoBehaviour
     public SphereCollider collider;
     public int damage = 10;
     public float attackCooldown = 0.5f;
+    public float attackDistance = 2f;
     public delegate void AttackEvent(IDamagable target);
     public AttackEvent onAttack;
     private Coroutine attackCoroutine;
@@ -37,7 +38,7 @@ public class EnemyCombat : MonoBehaviour
         {
             Transform playerTransform = player.GetTransform();
             float distance = Vector3.Distance(transform.position, playerTransform.position);
-            if (distance < 2f)
+            if (distance < attackDistance)
             {
                 onAttack?.Invoke(player);
                 player.Damage(damage);
