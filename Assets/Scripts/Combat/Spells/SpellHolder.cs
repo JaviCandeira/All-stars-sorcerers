@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SpellHolder : MonoBehaviour
 {
@@ -10,6 +12,8 @@ public class SpellHolder : MonoBehaviour
     
     public float cooldownTime;
     public float activeFor;
+    [SerializeField] private Image imageCoolDown;
+    [SerializeField] private TextMeshProUGUI textCoolDown;
     
     enum SpellState
     {
@@ -33,6 +37,11 @@ public class SpellHolder : MonoBehaviour
                     spell.Activate(gameObject);
                     spellState = SpellState.active;
                     activeFor = spell.activeFor;
+                    if (textCoolDown != null)
+                    {
+                        textCoolDown.gameObject.SetActive(false);
+                        imageCoolDown.fillAmount = 0.0f;
+                    }
                 }
 
                 break;
@@ -40,6 +49,12 @@ public class SpellHolder : MonoBehaviour
                 if (activeFor > 0)
                 {
                     activeFor -= Time.deltaTime;
+                    if (textCoolDown != null)
+                    {
+                        textCoolDown.gameObject.SetActive(true);
+                        imageCoolDown.fillAmount = 0.0f;
+                    }
+                    
                 }
                 else
                 {
@@ -51,6 +66,12 @@ public class SpellHolder : MonoBehaviour
                 if (cooldownTime > 0)
                 {
                     cooldownTime -= Time.deltaTime;
+                    if (textCoolDown != null)
+                    {
+                        imageCoolDown.fillAmount =  cooldownTime/  activeFor;
+                        //textCoolDown.text = Mathf.RoundToInt(cooldownTime).ToString();
+                        
+                    }
                 }
                 else
                 {

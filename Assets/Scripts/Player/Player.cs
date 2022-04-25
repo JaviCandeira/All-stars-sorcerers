@@ -13,6 +13,7 @@ public class Player : MonoBehaviour, IDamagable, IKillable
     private void Start()
     {
         currentHealth = stats.maxHealth;
+        PlayerManager.Instance.player = gameObject;
     }
 
     public void Damage(int damagePoints)
