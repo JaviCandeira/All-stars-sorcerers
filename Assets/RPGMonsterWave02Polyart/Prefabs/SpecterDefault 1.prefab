@@ -1898,6 +1898,7 @@ GameObject:
   - component: {fileID: 4550081447252403698}
   - component: {fileID: 6570038306488362542}
   - component: {fileID: 6188651428461870767}
+  - component: {fileID: -2483905361655028280}
   m_Layer: 0
   m_Name: SpecterDefault 1
   m_TagString: Enemy
@@ -1953,7 +1954,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookRadius: 7
-  stats: {fileID: 11400000, guid: 983ae4642915ae74b8c6816ff1c0899e, type: 2}
+  config: {fileID: 11400000, guid: ab4a0e87ad4326641856fd645d20e00a, type: 2}
 --- !u!195 &4550081447252403698
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2000,12 +2001,26 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6517527154684208942}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 1
   m_Height: 3
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &-2483905361655028280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6517527154684208942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c61f7bccf7fcaaf419f3623be80e3214, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pathCalcSpeed: 0.2
+  target: {fileID: 0}
 --- !u!1 &6517527154684208944
 GameObject:
   m_ObjectHideFlags: 0
