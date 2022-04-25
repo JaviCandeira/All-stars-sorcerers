@@ -8,8 +8,9 @@ public class EnemyConfig : ScriptableObject
 {
     //Stat related
     public int health = 100;
-    public int attackCooldown = 1;
+    public float attackCooldown = 1f;
     public int attackDamage = 10;
+    public float attackRadius = 1.5f;
     
     //Agent related 
     public float aiUpdateInterval = 0.2f;

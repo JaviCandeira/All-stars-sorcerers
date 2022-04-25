@@ -25,6 +25,11 @@ public class Player : MonoBehaviour, IDamagable, IKillable
         }
     }
 
+    public Transform GetTransform()
+    {
+        return transform;
+    }
+
     public void Perish()
     {
         Debug.Log("Dead");

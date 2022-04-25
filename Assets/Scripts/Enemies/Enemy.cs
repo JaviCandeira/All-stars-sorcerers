@@ -9,18 +9,17 @@ using UnityEngine.Timeline;
 
 public class Enemy : MonoBehaviour, IDamagable, IKillable
 {
-    public float lookRadius = 7f;
     public EnemyConfig config;
     public EnemyMovement enemyMovement;
+    public EnemyCombat enemyCombat;
     public int currentHealth { get; set; }
-    private GameObject target;
 
     private NavMeshAgent agent;
 
     private Animator _animator;
 
-    private float lastAttackedAt = -999f;
     
+    private Coroutine lookCoroutine;
 
     private static readonly int IsMoving = Animator.StringToHash("isMoving");
     private static readonly int Attack = Animator.StringToHash("Attack");
@@ -31,24 +30,28 @@ public class Enemy : MonoBehaviour, IDamagable, IKillable
         agent = GetComponent<NavMeshAgent>();
         enemyMovement = GetComponent<EnemyMovement>();
         _animator = GetComponent<Animator>();
-        target = PlayerManager.Instance.player;
         SetupFromConfig();
+    }
+
+    void Awake()
+    {
+        enemyCombat.onAttack = onAttack;
     }
 
     // Update is called once per frame
     void Update()
     {
-        float distance = Vector3.Distance(target.transform.position, transform.position);
-        if (Time.time > lastAttackedAt + config.attackCooldown)
-        {
-            if (distance <= 2f)
-            {
-                _animator.SetTrigger(Attack);
-                target.GetComponent<IDamagable>().Damage(config.attackDamage);
-                lastAttackedAt = Time.time;
-            }
-
-        }
+        // float distance = Vector3.Distance(target.transform.position, transform.position);
+        // if (Time.time > lastAttackedAt + config.attackCooldown)
+        // {
+        //     if (distance <= 2f)
+        //     {
+        //         _animator.SetTrigger(Attack);
+        //         target.GetComponent<IDamagable>().Damage(config.attackDamage);
+        //         lastAttackedAt = Time.time;
+        //     }
+        //
+        // }
         _animator.SetBool(IsMoving, agent.velocity.magnitude > 0f);
     }
 
@@ -67,6 +70,9 @@ public class Enemy : MonoBehaviour, IDamagable, IKillable
         agent.baseOffset = config.baseOffset;
         agent.stoppingDistance = config.stoppingDistance;
         enemyMovement.pathCalcSpeed = config.aiUpdateInterval;
+        (enemyCombat.collider == null ? enemyCombat.GetComponent<SphereCollider>() : enemyCombat.collider).radius = config.attackRadius;
+        enemyCombat.attackCooldown = config.attackCooldown;
+        enemyCombat.damage = config.attackDamage;
     }
 
     public void Damage(int damagePoints)
@@ -78,8 +84,42 @@ public class Enemy : MonoBehaviour, IDamagable, IKillable
         }
     }
 
+    public Transform GetTransform()
+    {
+        return transform;
+    }
+
     public void Perish()
     {
         
+    }
+    
+    private void onAttack(IDamagable target)
+    {
+        Debug.Log("I strike!");
+        _animator.SetTrigger(Attack);
+
+        if (lookCoroutine != null)
+        {
+            StopCoroutine(lookCoroutine);
+        }
+
+        lookCoroutine = StartCoroutine(LookAt(target.GetTransform()));
+    }
+    
+    private IEnumerator LookAt(Transform target)
+    {
+        Quaternion lookRotation = Quaternion.LookRotation(target.position - transform.position);
+        float time = 0;
+
+        while (time < 1)
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, time);
+
+            time += Time.deltaTime * 2;
+            yield return null;
+        }
+
+        transform.rotation = lookRotation;
     }
 }
