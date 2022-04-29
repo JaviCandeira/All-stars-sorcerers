@@ -1,10 +1,7 @@
 using Combat;
 using Enemies;
 using UnityEngine;
-
-namespace Player
-{
-    [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Animator))]
     public class Player : MonoBehaviour, IDamagable, IKillable
     {
         public Stats stats;
@@ -36,4 +33,4 @@ namespace Player
             Debug.Log("Dead");
         }
     }
-}
+

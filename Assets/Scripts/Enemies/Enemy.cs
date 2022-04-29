@@ -55,7 +55,13 @@ namespace Enemies
             _agent.avoidancePriority = config.avoidancePriority;
             _agent.baseOffset = config.baseOffset;
             _agent.stoppingDistance = config.stoppingDistance;
+            enemyMovement.idleLocRadius = config.idleLocRadius;
+            enemyMovement.eyes.viewRadius = config.viewRadius;
+            enemyMovement.eyes.collider.radius = config.viewRange;
             enemyMovement.pathCalcSpeed = config.aiUpdateInterval;
+            enemyMovement.DefaultState = config.defaultState;
+            enemyMovement.idleMoveMultiplier = config.idleMoveMultiplier;
+            enemyMovement.idleWait = config.idleWaitTime;
             enemyCombat.attackDistance = config.attackDistance;
             enemyCombat.attackCooldown = config.attackCooldown;
             enemyCombat.damage = config.attackDamage;
