@@ -17,7 +17,7 @@ MonoBehaviour:
   attackDamage: 10
   attackDistance: 4
   aiUpdateInterval: 0.2
-  accelaration: 8
+  acceleration: 8
   angularSpeed: 120
   areaMask: -1
   avoidancePriority: 50
@@ -25,5 +25,5 @@ MonoBehaviour:
   height: 2
   obstacleAvoidanceType: 4
   radius: 0.5
-  speed: 3
+  speed: 5
   stoppingDistance: 2

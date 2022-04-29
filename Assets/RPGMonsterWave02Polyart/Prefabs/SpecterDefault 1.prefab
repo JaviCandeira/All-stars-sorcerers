@@ -69,6 +69,7 @@ MonoBehaviour:
   collider: {fileID: 0}
   damage: 10
   attackCooldown: 0.5
+  attackDistance: 2
 --- !u!1 &6517527154684208768
 GameObject:
   m_ObjectHideFlags: 0
@@ -1966,8 +1967,8 @@ GameObject:
   - component: {fileID: 4550081447252403701}
   - component: {fileID: 4550081447252403698}
   - component: {fileID: 6570038306488362542}
-  - component: {fileID: 6188651428461870767}
   - component: {fileID: -2483905361655028280}
+  - component: {fileID: 3105058173331298934}
   m_Layer: 7
   m_Name: SpecterDefault 1
   m_TagString: Enemy
@@ -2023,7 +2024,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eae2659fba9eff747be3161c2d123a46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lookRadius: 7
   config: {fileID: 11400000, guid: ab4a0e87ad4326641856fd645d20e00a, type: 2}
   enemyMovement: {fileID: 0}
   enemyCombat: {fileID: 4378435536076807078}
@@ -2065,20 +2065,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!136 &6188651428461870767
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6517527154684208942}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 1
-  m_Height: 3
-  m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &-2483905361655028280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2093,6 +2079,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pathCalcSpeed: 0.2
   target: {fileID: 0}
+--- !u!65 &3105058173331298934
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6517527154684208942}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.3, y: 1, z: 1}
+  m_Center: {x: 0, y: 2, z: 0}
 --- !u!1 &6517527154684208944
 GameObject:
   m_ObjectHideFlags: 0

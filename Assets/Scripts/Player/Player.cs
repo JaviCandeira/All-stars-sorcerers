@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Player
 {
+    [RequireComponent(typeof(Animator))]
     public class Player : MonoBehaviour, IDamagable, IKillable
     {
         public Stats stats;
@@ -13,7 +14,6 @@ namespace Player
         private void Start()
         {
             CurrentHealth = stats.maxHealth;
-            PlayerManager.Instance.player = gameObject;
         }
 
         public void Damage(int damagePoints)

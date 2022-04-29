@@ -1,19 +1,21 @@
+using System;
+using Enemies;
 using UnityEngine;
 
 namespace Combat.Spells
 {
+    [RequireComponent(typeof(Collider))]
     public class DealDamage : MonoBehaviour
     {
-        // Start is called before the first frame update
-        void Start()
-        {
-        
-        }
+        public int damagePoints = 1;
 
-        // Update is called once per frame
-        void Update()
+        private void OnTriggerEnter(Collider other)
         {
-        
+            if (!other.gameObject.CompareTag("Enemy")) return;
+            var enemy = other.gameObject.GetComponent<IDamagable>();
+            if (other.gameObject.GetComponent<IDamagable>() == null) return;
+            enemy.Damage(damagePoints);
+            Destroy(gameObject);
         }
     }
 }

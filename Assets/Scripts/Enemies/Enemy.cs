@@ -64,6 +64,7 @@ namespace Enemies
         public void Damage(int damagePoints)
         {
             CurrentHealth -= damagePoints;
+            Debug.Log("Enemy is at: " + CurrentHealth + " health");
             if (CurrentHealth <= 0)
             {
                 Perish();
@@ -77,7 +78,7 @@ namespace Enemies
 
         public void Perish()
         {
-        
+            Destroy(gameObject);
         }
     
         private void OnAttack(IDamagable target)

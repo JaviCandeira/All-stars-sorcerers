@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,7 +9,8 @@ namespace Combat.Spells
     {
         public Spell spell;
         public KeyCode key;
-    
+        public GameObject player;
+        public Animator animator;
         public float cooldownTime;
         public float activeFor;
         [SerializeField] private Image imageCoolDown;
@@ -22,10 +24,16 @@ namespace Combat.Spells
         }
 
         private SpellState _spellState = SpellState.Ready;
-    
+        private static readonly int CastMagic = Animator.StringToHash("castMagic");
+
+        private void Start()
+        {
+            player = PlayerManager.Instance.player;
+            animator = player.GetComponent<Animator>();
+        }
 
         // Update is called once per frame
-        void Update()
+        private void Update()
         {
         
             switch (_spellState)
@@ -33,6 +41,7 @@ namespace Combat.Spells
                 case SpellState.Ready:
                     if (Input.GetKeyDown(key))
                     {
+                        animator.SetTrigger(CastMagic);
                         spell.Activate(gameObject);
                         _spellState = SpellState.Active;
                         activeFor = spell.activeFor;
@@ -53,7 +62,6 @@ namespace Combat.Spells
                             textCoolDown.gameObject.SetActive(true);
                             imageCoolDown.fillAmount = 0.0f;
                         }
-                    
                     }
                     else
                     {
