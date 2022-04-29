@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Enemies;
 using UnityEngine;
 [RequireComponent(typeof(SphereCollider))]
 public class EnemyCombat : MonoBehaviour
@@ -9,43 +10,39 @@ public class EnemyCombat : MonoBehaviour
     public float attackCooldown = 0.5f;
     public float attackDistance = 2f;
     public delegate void AttackEvent(IDamagable target);
-    public AttackEvent onAttack;
-    private Coroutine attackCoroutine;
-    private IDamagable player;
-    void Awake()
+    public AttackEvent OnAttack;
+    private Coroutine _attackCoroutine;
+    private IDamagable _player;
+
+    private void Awake()
     {
         collider = GetComponent<SphereCollider>();
     }
     
     private void OnTriggerEnter(Collider other)
     {
-        player = other.GetComponent<IDamagable>();
-        if (player != null)
-        {
-            if (attackCoroutine == null)
-            {
-                attackCoroutine = StartCoroutine(Obliterate());
-            }
-        }
+        _player = other.GetComponent<IDamagable>();
+        if (_player == null) return;
+        _attackCoroutine ??= StartCoroutine(Obliterate());
     }
     
     private IEnumerator Obliterate()
     {
-        WaitForSeconds Wait = new WaitForSeconds(attackCooldown);
+        var wait = new WaitForSeconds(attackCooldown);
 
-        yield return Wait;
-        while (player != null)
+        yield return wait;
+        while (_player != null)
         {
-            Transform playerTransform = player.GetTransform();
-            float distance = Vector3.Distance(transform.position, playerTransform.position);
+            var playerTransform = _player.GetTransform();
+            var distance = Vector3.Distance(transform.position, playerTransform.position);
             if (distance < attackDistance)
             {
-                onAttack?.Invoke(player);
-                player.Damage(damage);
+                OnAttack?.Invoke(_player);
+                _player.Damage(damage);
             }
-            yield return Wait;
+            yield return wait;
         }
 
-        attackCoroutine = null;
+        _attackCoroutine = null;
     }
 }

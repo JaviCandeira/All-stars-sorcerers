@@ -23,16 +23,16 @@ public class TimeScript : MonoBehaviour
     [SerializeField] private Light moon; 
     [SerializeField] private float maxMoonIntensity; 
      
-    private TimeSpan sunrise; 
-    private TimeSpan sunset; 
+    private TimeSpan _sunrise; 
+    private TimeSpan _sunset; 
  
-    private DateTime currentTime; 
+    private DateTime _currentTime; 
     // Start is called before the first frame update 
     void Start() 
     { 
-        currentTime = DateTime.Now.Date + TimeSpan.FromHours(startHr); 
-        sunrise = TimeSpan.FromHours(sunriseHr); 
-        sunset = TimeSpan.FromHours(sunsetHr); 
+        _currentTime = DateTime.Now.Date + TimeSpan.FromHours(startHr); 
+        _sunrise = TimeSpan.FromHours(sunriseHr); 
+        _sunset = TimeSpan.FromHours(sunsetHr); 
     } 
  
     // Update is called once per frame 
@@ -45,11 +45,11 @@ public class TimeScript : MonoBehaviour
  
     void UpdateTimeOfDay() 
     { 
-        currentTime = currentTime.AddSeconds(Time.deltaTime * timeMult); 
+        _currentTime = _currentTime.AddSeconds(Time.deltaTime * timeMult); 
  
         if (timeText != null) 
         { 
-            timeText.text = currentTime.ToString("HH:mm"); 
+            timeText.text = _currentTime.ToString("HH:mm"); 
         } 
     } 
  
@@ -57,10 +57,10 @@ public class TimeScript : MonoBehaviour
     { 
         float sunRotation;
         float moonRotation; 
-        if (currentTime.TimeOfDay > sunrise && currentTime.TimeOfDay < sunset) 
+        if (_currentTime.TimeOfDay > _sunrise && _currentTime.TimeOfDay < _sunset) 
         { 
-            TimeSpan sunriseToSunset = CalculateTimeDiff(sunrise, sunset); 
-            TimeSpan timeSinceSunrise = CalculateTimeDiff(sunrise, currentTime.TimeOfDay); 
+            TimeSpan sunriseToSunset = CalculateTimeDiff(_sunrise, _sunset); 
+            TimeSpan timeSinceSunrise = CalculateTimeDiff(_sunrise, _currentTime.TimeOfDay); 
  
             double percentage = timeSinceSunrise.TotalMinutes / sunriseToSunset.TotalMinutes; 
  
@@ -69,8 +69,8 @@ public class TimeScript : MonoBehaviour
         } 
         else 
         { 
-            TimeSpan sunsetToSunrise = CalculateTimeDiff(sunset, sunrise); 
-            TimeSpan timeSinceSunset = CalculateTimeDiff(sunset, currentTime.TimeOfDay); 
+            TimeSpan sunsetToSunrise = CalculateTimeDiff(_sunset, _sunrise); 
+            TimeSpan timeSinceSunset = CalculateTimeDiff(_sunset, _currentTime.TimeOfDay); 
  
             double percentage = timeSinceSunset.TotalMinutes / sunsetToSunrise.TotalMinutes; 
  

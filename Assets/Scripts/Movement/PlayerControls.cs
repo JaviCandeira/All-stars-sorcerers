@@ -1,34 +1,35 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerControls : MonoBehaviour
+namespace Movement
 {
-    private float _horizontalInput;
-    private float _verticalInput;
-
-    private MovementController _movement;
-
-    // Start is called before the first frame update
-    void Start()
+    public class PlayerControls : MonoBehaviour
     {
-        _movement = GetComponent<MovementController>();
-    }
+        private float _horizontalInput;
+        private float _verticalInput;
 
-    // Update is called once per frame
-    void Update()
-    {
-        SetInputs();
-    }
+        private MovementController _movement;
 
-    private void FixedUpdate()
-    {
-        _movement.Move(_horizontalInput, _verticalInput);
-    }
+        // Start is called before the first frame update
+        void Start()
+        {
+            _movement = GetComponent<MovementController>();
+        }
 
-    private void SetInputs()
-    {
-        _horizontalInput = Input.GetAxis("Horizontal");
-        _verticalInput = Input.GetAxis("Vertical");
+        // Update is called once per frame
+        void Update()
+        {
+            SetInputs();
+        }
+
+        private void FixedUpdate()
+        {
+            _movement.Move(_horizontalInput, _verticalInput);
+        }
+
+        private void SetInputs()
+        {
+            _horizontalInput = Input.GetAxis("Horizontal");
+            _verticalInput = Input.GetAxis("Vertical");
+        }
     }
 }

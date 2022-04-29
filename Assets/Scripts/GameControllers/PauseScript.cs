@@ -1,17 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-public class PauseScript : MonoBehaviour
+
+namespace GameControllers
 {
-    public static bool isPaused = false;
-    public GameObject pauseMenu;
-    
-    void Update()
+    public class PauseScript : MonoBehaviour
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        public static bool IsPaused = false;
+        public GameObject pauseMenu;
+
+        private void Update()
         {
-            if (isPaused)
+            if (!Input.GetKeyDown(KeyCode.Escape)) return;
+            if (IsPaused)
             {
                 ResumeGame();
             }
@@ -20,25 +19,25 @@ public class PauseScript : MonoBehaviour
                 PauseGame();
             }
         }
-    }
 
-    public void PauseGame()
-    {
-        pauseMenu.SetActive(true);
-        isPaused = true;
-        Time.timeScale = 0f;
-    }
+        public void PauseGame()
+        {
+            pauseMenu.SetActive(true);
+            IsPaused = true;
+            Time.timeScale = 0f;
+        }
 
-    public void ResumeGame()
-    {
-        pauseMenu.SetActive(false);
-        isPaused = false;
-        Time.timeScale = 1f;
-    }
+        public void ResumeGame()
+        {
+            pauseMenu.SetActive(false);
+            IsPaused = false;
+            Time.timeScale = 1f;
+        }
 
-    public void QuitGame()
-    {
-        Application.Quit();
-    }
+        public void QuitGame()
+        {
+            Application.Quit();
+        }
     
+    }
 }

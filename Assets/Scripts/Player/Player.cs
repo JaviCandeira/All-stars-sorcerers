@@ -1,38 +1,39 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Combat;
+using Enemies;
 using UnityEngine;
 
-public class Player : MonoBehaviour, IDamagable, IKillable
+namespace Player
 {
-    public Stats stats;
-
-    public int currentHealth { get; set; }
-
-    private void Start()
+    public class Player : MonoBehaviour, IDamagable, IKillable
     {
-        currentHealth = stats.maxHealth;
-        PlayerManager.Instance.player = gameObject;
-    }
+        public Stats stats;
 
-    public void Damage(int damagePoints)
-    {
-        currentHealth -= damagePoints;
-        Debug.Log("Oh noooo!: " + currentHealth);
-        if(currentHealth <= 0)
+        private int CurrentHealth { get; set; }
+
+        private void Start()
         {
-            Perish();
+            CurrentHealth = stats.maxHealth;
+            PlayerManager.Instance.player = gameObject;
         }
-    }
 
-    public Transform GetTransform()
-    {
-        return transform;
-    }
+        public void Damage(int damagePoints)
+        {
+            CurrentHealth -= damagePoints;
+            Debug.Log("Oh noooo!: " + CurrentHealth);
+            if(CurrentHealth <= 0)
+            {
+                Perish();
+            }
+        }
 
-    public void Perish()
-    {
-        Debug.Log("Dead");
+        public Transform GetTransform()
+        {
+            return transform;
+        }
+
+        public void Perish()
+        {
+            Debug.Log("Dead");
+        }
     }
 }

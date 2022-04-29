@@ -1,19 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
+using Movement;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Dash", menuName = "Spells/Dash")]
-public class Dash : Spell
+namespace Combat.Spells
 {
-    public float dashVelocity;
-
-    public override void Activate(GameObject parent)
+    [CreateAssetMenu(fileName = "Dash", menuName = "Spells/Dash")]
+    public class Dash : Spell
     {
-        var animator = parent.GetComponent<Animator>();
-        var movementController = parent.GetComponent<MovementController>();
-        var rigidbody = parent.GetComponent<Rigidbody>();
-        animator.Play("Dash");
-        rigidbody.AddForce(movementController.transform.forward * dashVelocity * Time.deltaTime,
-            ForceMode.VelocityChange);
+        public float dashVelocity;
+
+        public override void Activate(GameObject parent)
+        {
+            var animator = parent.GetComponent<Animator>();
+            var movementController = parent.GetComponent<MovementController>();
+            var rigidbody = parent.GetComponent<Rigidbody>();
+            animator.Play("Dash");
+            rigidbody.AddForce(movementController.transform.forward * dashVelocity * Time.deltaTime,
+                ForceMode.VelocityChange);
+        }
     }
 }

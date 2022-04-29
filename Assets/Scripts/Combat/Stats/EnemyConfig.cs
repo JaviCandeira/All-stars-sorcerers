@@ -14,7 +14,7 @@ public class EnemyConfig : ScriptableObject
     
     //Agent related 
     public float aiUpdateInterval = 0.2f;
-    public float accelaration = 8;
+    public float acceleration = 8;
     public float angularSpeed = 120;
     public int areaMask = -1;
     public int avoidancePriority = 50;

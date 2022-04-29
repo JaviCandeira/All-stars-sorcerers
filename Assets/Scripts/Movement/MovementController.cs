@@ -1,40 +1,39 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class MovementController : MonoBehaviour
+namespace Movement
 {
-    [Header("Movement")]
-    public float moveSpeed = 7;
-
-    private Animator _animator;
-    private Rigidbody body;
-    private static readonly int IsMoving = Animator.StringToHash("isMoving");
-
-    // Start is called before the first frame update
-    void Start()
+    public class MovementController : MonoBehaviour
     {
-        body = GetComponent<Rigidbody>();
-        body.freezeRotation = true;
-        _animator = GetComponent<Animator>();
-    }
+        public float moveSpeed = 7;
 
-    public void Move(float horizontalInput, float verticalInput)
-    {
-        Vector3 moveDirection = new Vector3(horizontalInput, 0f, verticalInput);
-        float magnitude = Mathf.Clamp01(moveDirection.magnitude) * moveSpeed;
-        moveDirection.Normalize();
+        private Animator _animator;
+        private Rigidbody _body;
+        private static readonly int IsMoving = Animator.StringToHash("isMoving");
 
-        if (moveDirection != Vector3.zero)
+        // Start is called before the first frame update
+        void Start()
         {
-            _animator.SetBool(IsMoving, true);
-            //To stop the object from rotating back to default position
-            Quaternion moveRotation = Quaternion.LookRotation(moveDirection);
-            transform.Translate(moveDirection * magnitude * Time.deltaTime, Space.World);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, moveRotation, 360 * Time.deltaTime * 2);
+            _body = GetComponent<Rigidbody>();
+            _body.freezeRotation = true;
+            _animator = GetComponent<Animator>();
         }
-        else 
-        if(_animator) _animator.SetBool(IsMoving, false);
+
+        public void Move(float horizontalInput, float verticalInput)
+        {
+            Vector3 moveDirection = new Vector3(horizontalInput, 0f, verticalInput);
+            float magnitude = Mathf.Clamp01(moveDirection.magnitude) * moveSpeed;
+            moveDirection.Normalize();
+
+            if (moveDirection != Vector3.zero)
+            {
+                _animator.SetBool(IsMoving, true);
+                //To stop the object from rotating back to default position
+                Quaternion moveRotation = Quaternion.LookRotation(moveDirection);
+                transform.Translate(moveDirection * magnitude * Time.deltaTime, Space.World);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, moveRotation, 360 * Time.deltaTime * 2);
+            }
+            else 
+            if(_animator) _animator.SetBool(IsMoving, false);
+        }
     }
 }

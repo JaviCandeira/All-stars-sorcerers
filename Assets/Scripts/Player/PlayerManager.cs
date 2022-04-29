@@ -15,8 +15,8 @@ public class PlayerManager : MonoBehaviour
     }
 
     #endregion
-    public GameObject playerPrefab;
-    public GameObject player { get;  set; }
+    // public GameObject playerPrefab;
+    public GameObject player;
 
 }
 

@@ -1,125 +1,111 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using Combat;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Serialization;
-using UnityEngine.Timeline;
 
-public class Enemy : MonoBehaviour, IDamagable, IKillable
+namespace Enemies
 {
-    public EnemyConfig config;
-    public EnemyMovement enemyMovement;
-    public EnemyCombat enemyCombat;
-    public int currentHealth { get; set; }
+    public class Enemy : MonoBehaviour, IDamagable, IKillable
+    {
+        public EnemyConfig config;
+        public EnemyMovement enemyMovement;
+        public EnemyCombat enemyCombat;
+        private int CurrentHealth { get; set; }
 
-    private NavMeshAgent agent;
+        private NavMeshAgent _agent;
 
-    private Animator _animator;
+        private Animator _animator;
 
     
-    private Coroutine lookCoroutine;
+        private Coroutine _lookCoroutine;
 
-    private static readonly int IsMoving = Animator.StringToHash("isMoving");
-    private static readonly int Attack = Animator.StringToHash("Attack");
+        private static readonly int IsMoving = Animator.StringToHash("isMoving");
+        private static readonly int Attack = Animator.StringToHash("Attack");
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        agent = GetComponent<NavMeshAgent>();
-        enemyMovement = GetComponent<EnemyMovement>();
-        _animator = GetComponent<Animator>();
-        SetupFromConfig();
-    }
-
-    void Awake()
-    {
-        enemyCombat.onAttack = onAttack;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        // float distance = Vector3.Distance(target.transform.position, transform.position);
-        // if (Time.time > lastAttackedAt + config.attackCooldown)
-        // {
-        //     if (distance <= 2f)
-        //     {
-        //         _animator.SetTrigger(Attack);
-        //         target.GetComponent<IDamagable>().Damage(config.attackDamage);
-        //         lastAttackedAt = Time.time;
-        //     }
-        //
-        // }
-        _animator.SetBool(IsMoving, agent.velocity.magnitude > 0f);
-    }
-
-
-    private void SetupFromConfig()
-    {
-        currentHealth = config.health;
-        agent.areaMask = config.areaMask;
-        agent.height = config.height;
-        agent.radius = config.radius;
-        agent.acceleration = config.accelaration;
-        agent.angularSpeed = config.angularSpeed;
-        agent.obstacleAvoidanceType = config.obstacleAvoidanceType;
-        agent.speed = config.speed;
-        agent.avoidancePriority = config.avoidancePriority;
-        agent.baseOffset = config.baseOffset;
-        agent.stoppingDistance = config.stoppingDistance;
-        enemyMovement.pathCalcSpeed = config.aiUpdateInterval;
-        enemyCombat.attackDistance = config.attackDistance;
-        enemyCombat.attackCooldown = config.attackCooldown;
-        enemyCombat.damage = config.attackDamage;
-    }
-
-    public void Damage(int damagePoints)
-    {
-        currentHealth -= damagePoints;
-        if (currentHealth <= 0)
+        // Start is called before the first frame update
+        private void Start()
         {
-            Perish();
+            _agent = GetComponent<NavMeshAgent>();
+            enemyMovement = GetComponent<EnemyMovement>();
+            _animator = GetComponent<Animator>();
+            SetupFromConfig();
         }
-    }
 
-    public Transform GetTransform()
-    {
-        return transform;
-    }
+        private void Awake()
+        {
+            enemyCombat.OnAttack = OnAttack;
+        }
 
-    public void Perish()
-    {
+        // Update is called once per frame
+        private void Update()
+        {
+            _animator.SetBool(IsMoving, _agent.velocity.magnitude > 0f);
+        }
+
+
+        private void SetupFromConfig()
+        {
+            CurrentHealth = config.health;
+            _agent.areaMask = config.areaMask;
+            _agent.height = config.height;
+            _agent.radius = config.radius;
+            _agent.acceleration = config.acceleration;
+            _agent.angularSpeed = config.angularSpeed;
+            _agent.obstacleAvoidanceType = config.obstacleAvoidanceType;
+            _agent.speed = config.speed;
+            _agent.avoidancePriority = config.avoidancePriority;
+            _agent.baseOffset = config.baseOffset;
+            _agent.stoppingDistance = config.stoppingDistance;
+            enemyMovement.pathCalcSpeed = config.aiUpdateInterval;
+            enemyCombat.attackDistance = config.attackDistance;
+            enemyCombat.attackCooldown = config.attackCooldown;
+            enemyCombat.damage = config.attackDamage;
+        }
+
+        public void Damage(int damagePoints)
+        {
+            CurrentHealth -= damagePoints;
+            if (CurrentHealth <= 0)
+            {
+                Perish();
+            }
+        }
+
+        public Transform GetTransform()
+        {
+            return transform;
+        }
+
+        public void Perish()
+        {
         
-    }
-    
-    private void onAttack(IDamagable target)
-    {
-        Debug.Log("I strike!");
-        _animator.SetTrigger(Attack);
-
-        if (lookCoroutine != null)
-        {
-            StopCoroutine(lookCoroutine);
         }
-
-        lookCoroutine = StartCoroutine(LookAt(target.GetTransform()));
-    }
     
-    private IEnumerator LookAt(Transform target)
-    {
-        Quaternion lookRotation = Quaternion.LookRotation(target.position - transform.position);
-        float time = 0;
-
-        while (time < 1)
+        private void OnAttack(IDamagable target)
         {
-            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, time);
+            _animator.SetTrigger(Attack);
 
-            time += Time.deltaTime * 2;
-            yield return null;
+            if (_lookCoroutine != null)
+            {
+                StopCoroutine(_lookCoroutine);
+            }
+
+            _lookCoroutine = StartCoroutine(LookAt(target.GetTransform()));
         }
+    
+        private IEnumerator LookAt(Transform target)
+        {
+            var lookRotation = Quaternion.LookRotation(target.position - transform.position);
+            float time = 0;
 
-        transform.rotation = lookRotation;
+            while (time < 1)
+            {
+                transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, time);
+
+                time += Time.deltaTime * 2;
+                yield return null;
+            }
+
+            transform.rotation = lookRotation;
+        }
     }
 }

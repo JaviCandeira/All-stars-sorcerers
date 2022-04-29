@@ -1,25 +1,23 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.UIElements;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 
-[CreateAssetMenu(fileName = "New Skillshot", menuName = "Spells/Skillshot")]
-public class Skillshot : Spell
+namespace Combat.Spells
 {
-    public Rigidbody _vfx;
-    public float skillShotForce = 200f;
-    private SkillshotController skillshotController;
-
-    public override void Activate(GameObject parent)
+    [CreateAssetMenu(fileName = "New Skillshot", menuName = "Spells/Skillshot")]
+    public class Skillshot : Spell
     {
-        skillshotController = parent.GetComponent<SkillshotController>();
-        skillshotController.skillShotForce = skillShotForce;
-        skillshotController.projectile = _vfx;
-        skillshotController.lifetime = lifeTime;
+        public Rigidbody vfx;
+        public float skillShotForce = 200f;
+        private SkillshotController _skillshotController;
 
-        skillshotController.Launch();
+        public override void Activate(GameObject parent)
+        {
+            _skillshotController = parent.GetComponent<SkillshotController>();
+            _skillshotController.skillShotForce = skillShotForce;
+            _skillshotController.projectile = vfx;
+            _skillshotController.lifetime = lifeTime;
+
+            _skillshotController.Launch();
+        }
+
     }
-
 }
