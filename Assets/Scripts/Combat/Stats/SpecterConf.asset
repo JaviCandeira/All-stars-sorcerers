@@ -30,6 +30,6 @@ MonoBehaviour:
   stoppingDistance: 2
   idleLocRadius: 8
   idleMoveMultiplier: 0.5
-  viewRadius: 360
+  viewRadius: 90
   viewRange: 6
   idleWaitTime: 100
