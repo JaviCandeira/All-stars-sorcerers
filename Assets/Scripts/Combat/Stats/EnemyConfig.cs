@@ -29,7 +29,6 @@ public class EnemyConfig : ScriptableObject
     
     //Move related
     public float idleLocRadius = 4f;
-    public float idleMoveMultiplier = 0.5f;
     public float viewRadius = 360f;
     public float viewRange = 6f;
     public float idleWaitTime = 3f;

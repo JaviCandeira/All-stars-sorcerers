@@ -24,13 +24,13 @@ namespace Enemies
         // Start is called before the first frame update
         private void Start()
         {
-            _agent = GetComponent<NavMeshAgent>();
-            enemyMovement = GetComponent<EnemyMovement>();
             _animator = GetComponent<Animator>();
         }
 
         private void Awake()
         {
+            _agent = GetComponent<NavMeshAgent>();
+            enemyMovement = GetComponent<EnemyMovement>();
             SetupFromConfig();
             enemyCombat.OnAttack = OnAttack;
         }
@@ -40,8 +40,7 @@ namespace Enemies
         {
             _animator.SetBool(IsMoving, _agent.velocity.magnitude > 0f);
         }
-
-
+        
         private void SetupFromConfig()
         {
             CurrentHealth = config.health;
@@ -60,7 +59,6 @@ namespace Enemies
             enemyMovement.eyes.collider.radius = config.viewRange;
             enemyMovement.pathCalcSpeed = config.aiUpdateInterval;
             enemyMovement.DefaultState = config.defaultState;
-            enemyMovement.idleMoveMultiplier = config.idleMoveMultiplier;
             enemyMovement.idleWait = config.idleWaitTime;
             enemyCombat.attackDistance = config.attackDistance;
             enemyCombat.attackCooldown = config.attackCooldown;

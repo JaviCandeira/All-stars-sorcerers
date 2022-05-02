@@ -63,13 +63,10 @@ namespace Enemies
         private IEnumerator BeIdle()
         {
             WaitForSeconds wait = new WaitForSeconds(idleWait);
-
-            _agent.speed *= idleMoveMultiplier;
-
+            
             while (true)
             {
                 yield return wait;
-                Debug.Log("Not waiting");
                 if (_agent.remainingDistance <= _agent.stoppingDistance)
                 {
                     Vector2 point = Random.insideUnitCircle * idleLocRadius;
@@ -90,11 +87,6 @@ namespace Enemies
                 if (FollowCoroutine != null)
                 {
                     StopCoroutine(FollowCoroutine);
-                }
-
-                if (oldState == EnemyState.Idle)
-                {
-                    _agent.speed /= idleMoveMultiplier;
                 }
                 switch (newState)
                 {
