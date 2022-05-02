@@ -6,19 +6,22 @@ using UnityEngine;
 
 public class Knockback : MonoBehaviour
 {
-    [SerializeField] private float knockbackStrength =  1;
-    private void OnCollisionEnter(Collision collision)
+    [SerializeField] private float knockbackStrength =  100000000;
+    private void OnTriggerEnter(Collider collider)
     {
-        Rigidbody rb = collision.collider.GetComponent<Rigidbody>();
+        var rb = collider.gameObject.GetComponent<Rigidbody>();
+        
+        Debug.Log(collider.gameObject.name);
 
-        if (rb != null)
+        if (rb == null)
         {
-            Destroy(gameObject);
-            rb.velocity = new Vector3();
-            Vector3 direction = collision.transform.position - transform.position;
-            direction.y = 0;
-            rb.AddForce(direction.normalized * knockbackStrength, ForceMode.Impulse);
+            Debug.Log("Collider doesn't have a rigidbody");
         }
+        var direction = collider.transform.position - transform.position;
+        direction.y = 0;
+        rb.AddForce(direction.normalized * knockbackStrength, ForceMode.Impulse);
+        Destroy(gameObject);
+
     }
 }
 

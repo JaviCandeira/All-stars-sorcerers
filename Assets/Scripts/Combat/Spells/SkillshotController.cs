@@ -19,6 +19,7 @@ public class SkillshotController : MonoBehaviour
         var clonedProjectile = Instantiate(projectile, skillShotSpawn.position + Vector3.up, _lookRotation);
         clonedProjectile.AddForce((_skillshotDirection - skillShotSpawn.transform.position).normalized * skillShotForce);
         Destroy(clonedProjectile.gameObject, lifetime);
+      
     }
 
     private void Update()
@@ -26,7 +27,7 @@ public class SkillshotController : MonoBehaviour
         if (Camera.main == null) return;
         var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (!Physics.Raycast(ray, out var hit)) return;
+        if (!Physics.Raycast(ray, out var hit, 100, 1 << 11)) return;
         var position = transform.position;
         _lookRotation = Quaternion.LookRotation(new Vector3(hit.point.x, position.y, hit.point.z));
         _skillshotDirection = new Vector3(hit.point.x, position.y, hit.point.z);

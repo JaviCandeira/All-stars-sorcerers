@@ -17,7 +17,7 @@ using UnityEngine;
         public void Damage(int damagePoints)
         {
             CurrentHealth -= damagePoints;
-            Debug.Log("Oh noooo!: " + CurrentHealth);
+            // Debug.Log("Oh noooo!: " + CurrentHealth);
             if(CurrentHealth <= 0)
             {
                 Perish();
