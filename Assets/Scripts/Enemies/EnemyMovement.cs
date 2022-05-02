@@ -69,6 +69,7 @@ namespace Enemies
             while (true)
             {
                 yield return wait;
+                Debug.Log("Not waiting");
                 if (_agent.remainingDistance <= _agent.stoppingDistance)
                 {
                     Vector2 point = Random.insideUnitCircle * idleLocRadius;

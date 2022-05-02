@@ -15,7 +15,7 @@ namespace Combat.Spells
             var enemy = other.gameObject.GetComponent<IDamagable>();
             if (other.gameObject.GetComponent<IDamagable>() == null) return;
             enemy.Damage(damagePoints);
-            Destroy(gameObject);
+            
         }
     }
 }

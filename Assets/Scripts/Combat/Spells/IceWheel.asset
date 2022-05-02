@@ -19,4 +19,4 @@ MonoBehaviour:
   speed: 5
   lifeTime: 2
   vfx: {fileID: 2486084718330607243, guid: e99cf562a8a0fef4a915dc2f0f2d5331, type: 3}
-  skillShotForce: 100
+  skillShotForce: 1000

@@ -17,7 +17,7 @@ public class SkillshotController : MonoBehaviour
     public void Launch()
     {
         var clonedProjectile = Instantiate(projectile, skillShotSpawn.position + Vector3.up, _lookRotation);
-        clonedProjectile.AddForce((_skillshotDirection - skillShotSpawn.transform.position) * skillShotForce);
+        clonedProjectile.AddForce((_skillshotDirection - skillShotSpawn.transform.position).normalized * skillShotForce);
         Destroy(clonedProjectile.gameObject, lifetime);
     }
 

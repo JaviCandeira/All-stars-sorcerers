@@ -27,11 +27,11 @@ namespace Enemies
             _agent = GetComponent<NavMeshAgent>();
             enemyMovement = GetComponent<EnemyMovement>();
             _animator = GetComponent<Animator>();
-            SetupFromConfig();
         }
 
         private void Awake()
         {
+            SetupFromConfig();
             enemyCombat.OnAttack = OnAttack;
         }
 

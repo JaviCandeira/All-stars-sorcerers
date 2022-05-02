@@ -32,4 +32,4 @@ MonoBehaviour:
   idleMoveMultiplier: 0.5
   viewRadius: 90
   viewRange: 6
-  idleWaitTime: 100
+  idleWaitTime: 1.5
