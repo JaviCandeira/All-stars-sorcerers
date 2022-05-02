@@ -27,7 +27,7 @@ MonoBehaviour:
   obstacleAvoidanceType: 4
   radius: 0.5
   speed: 5
-  stoppingDistance: 0.5
+  stoppingDistance: 3
   idleLocRadius: 8
   idleMoveMultiplier: 0.5
   viewRadius: 90

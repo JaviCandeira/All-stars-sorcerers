@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 979599048, guid: 3cc118830e19d5b4ea0864ad49965a5f, type: 3}
+      propertyPath: spell
+      value: 
+      objectReference: {fileID: 11400000, guid: 2c84c6d9bb802f1419baaa810ba18906, type: 2}
     - target: {fileID: 4746626450421474569, guid: 3cc118830e19d5b4ea0864ad49965a5f, type: 3}
       propertyPath: m_RootOrder
       value: 5

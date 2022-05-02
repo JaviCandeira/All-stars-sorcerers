@@ -4,13 +4,14 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
     public class Player : MonoBehaviour, IDamagable, IKillable
     {
-        public Stats stats;
+        public int maxHealth;
+        public int maxMana;
 
         private int CurrentHealth { get; set; }
 
         private void Start()
         {
-            CurrentHealth = stats.maxHealth;
+        CurrentHealth = maxHealth;
         }
 
         public void Damage(int damagePoints)

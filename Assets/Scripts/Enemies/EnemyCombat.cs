@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(SphereCollider))]
 public class EnemyCombat : MonoBehaviour
 {
-    public SphereCollider collider;
+    public new SphereCollider collider;
     public int damage = 10;
     public float attackCooldown = 0.5f;
     public float attackDistance = 2f;

@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e82ab06410f7a224c9c515103b438c4e, type: 3}
   m_Name: IceWheel
   m_EditorClassIdentifier: 
-  name: 
+  name: Ice Wheel
   cooldown: 2
-  activeFor: 0
+  activeFor: 0.25
   manaCost: 0
-  speed: 2
+  speed: 5
   lifeTime: 2
   vfx: {fileID: 2486084718330607243, guid: e99cf562a8a0fef4a915dc2f0f2d5331, type: 3}
-  skillShotForce: 50
+  skillShotForce: 100
