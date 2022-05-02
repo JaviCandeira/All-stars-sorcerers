@@ -24424,7 +24424,6 @@ GameObject:
   - component: {fileID: 1340851368774661333}
   - component: {fileID: 2486084718330607243}
   - component: {fileID: 5226954900095763417}
-  - component: {fileID: -8622359193404993119}
   m_Layer: 9
   m_Name: IceWheel
   m_TagString: IceWheel
@@ -24494,18 +24493,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damagePoints: 50
---- !u!114 &-8622359193404993119
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5910897565284127006}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1b64a59226626d458f5e9e5383eafce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5910897565502488610
 GameObject:
   m_ObjectHideFlags: 0

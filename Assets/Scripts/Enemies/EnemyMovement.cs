@@ -11,7 +11,6 @@ namespace Enemies
         public float pathCalcSpeed = 0.2f;
         public float idleWait;
         public float idleLocRadius;
-        public float idleMoveMultiplier;
         public Transform target;
         private NavMeshAgent _agent;
         private Coroutine FollowCoroutine;
