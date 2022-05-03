@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace GameControllers
@@ -6,7 +7,8 @@ namespace GameControllers
     {
         public static bool IsPaused = false;
         public GameObject pauseMenu;
-
+        public GameObject settingsMenu;
+        
         private void Update()
         {
             if (!Input.GetKeyDown(KeyCode.Escape)) return;
@@ -18,6 +20,7 @@ namespace GameControllers
             {
                 PauseGame();
             }
+            
         }
 
         public void PauseGame()
@@ -38,6 +41,19 @@ namespace GameControllers
         {
             Application.Quit();
         }
-    
+
+        public void Settings()
+        {
+            Console.WriteLine("hello");
+            pauseMenu.SetActive(false);
+            settingsMenu.SetActive(true);
+        }
+
+        public void GoBack()
+        {
+            settingsMenu.SetActive(false);
+            pauseMenu.SetActive(true);
+            
+        }
     }
 }

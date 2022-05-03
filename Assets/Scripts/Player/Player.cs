@@ -1,6 +1,8 @@
 using Combat;
 using Enemies;
 using UnityEngine;
+using UnityEngine.UI;
+
 [RequireComponent(typeof(Animator))]
     public class Player : MonoBehaviour, IDamagable, IKillable
     {
