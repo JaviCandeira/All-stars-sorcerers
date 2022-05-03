@@ -14,7 +14,7 @@ namespace Combat.Spells
             var movementController = parent.GetComponent<MovementController>();
             var rigidbody = parent.GetComponent<Rigidbody>();
             animator.Play("Dash");
-            rigidbody.AddForce(movementController.transform.forward * dashVelocity * Time.deltaTime,
+            rigidbody.AddForce(movementController.transform.forward.normalized * dashVelocity * Time.deltaTime,
                 ForceMode.VelocityChange);
         }
     }
