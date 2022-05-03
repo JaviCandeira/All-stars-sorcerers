@@ -13,7 +13,7 @@ namespace Combat.Spells
         public Animator animator;
         public float cooldownTime;
         public float activeFor;
-        [SerializeField] private Image imageCoolDown;
+        
         [SerializeField] private TextMeshProUGUI textCoolDown;
     
         enum SpellState
@@ -48,7 +48,7 @@ namespace Combat.Spells
                         if (textCoolDown != null)
                         {
                             textCoolDown.gameObject.SetActive(false);
-                            imageCoolDown.fillAmount = 0.0f;
+                           
                         }
                     }
 
@@ -60,7 +60,6 @@ namespace Combat.Spells
                         if (textCoolDown != null)
                         {
                             textCoolDown.gameObject.SetActive(true);
-                            imageCoolDown.fillAmount = 0.0f;
                         }
                     }
                     else
@@ -75,8 +74,7 @@ namespace Combat.Spells
                         cooldownTime -= Time.deltaTime;
                         if (textCoolDown != null)
                         {
-                            imageCoolDown.fillAmount =  cooldownTime/  activeFor;
-                            //textCoolDown.text = Mathf.RoundToInt(cooldownTime).ToString();
+                            textCoolDown.text = Mathf.RoundToInt(cooldownTime).ToString();
                         
                         }
                     }
