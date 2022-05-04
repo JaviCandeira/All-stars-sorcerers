@@ -190,6 +190,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Abe
       objectReference: {fileID: 0}
+    - target: {fileID: 5374121703157284787, guid: 3cc118830e19d5b4ea0864ad49965a5f, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3cc118830e19d5b4ea0864ad49965a5f, type: 3}
 --- !u!1 &34064113
@@ -595,7 +599,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &412961744
 GameObject:
@@ -1009,7 +1013,7 @@ Transform:
   - {fileID: 96308646}
   - {fileID: 34064117}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &470484630
 GameObject:
@@ -1874,7 +1878,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6517527154684443340, guid: 3168d95744883cb4dbe815466ca43781, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6517527154684443340, guid: 3168d95744883cb4dbe815466ca43781, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2627,7 +2631,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6130310258394671548, guid: 13b65c18d53756849bc3c804027de8fb, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 6130310258394671548, guid: 13b65c18d53756849bc3c804027de8fb, type: 3}
       propertyPath: m_LocalPosition.x
