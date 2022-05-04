@@ -17,6 +17,7 @@ MonoBehaviour:
   attackDamage: 10
   attackDistance: 2
   defaultState: 1
+  score: 50
   aiUpdateInterval: 0.2
   acceleration: 8
   angularSpeed: 120

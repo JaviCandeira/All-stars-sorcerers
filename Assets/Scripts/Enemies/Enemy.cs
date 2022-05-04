@@ -10,12 +10,13 @@ namespace Enemies
         public EnemyMovement enemyMovement;
         public EnemyCombat enemyCombat;
         private int CurrentHealth { get; set; }
+        private int score;
 
         private NavMeshAgent _agent;
 
         private Animator _animator;
 
-    
+
         private Coroutine _lookCoroutine;
 
         private static readonly int IsMoving = Animator.StringToHash("isMoving");
@@ -40,7 +41,7 @@ namespace Enemies
         {
             _animator.SetBool(IsMoving, _agent.velocity.magnitude > 0f);
         }
-        
+
         private void SetupFromConfig()
         {
             CurrentHealth = config.health;
@@ -63,6 +64,7 @@ namespace Enemies
             enemyCombat.attackDistance = config.attackDistance;
             enemyCombat.attackCooldown = config.attackCooldown;
             enemyCombat.damage = config.attackDamage;
+            score = config.score;
         }
 
         public void Damage(int damagePoints)
@@ -83,8 +85,9 @@ namespace Enemies
         public void Perish()
         {
             Destroy(gameObject);
+            ScoreCounter.Instance.increase(score);
         }
-    
+
         private void OnAttack(IDamagable target)
         {
             _animator.SetTrigger(Attack);
@@ -96,7 +99,7 @@ namespace Enemies
 
             _lookCoroutine = StartCoroutine(LookAt(target.GetTransform()));
         }
-    
+
         private IEnumerator LookAt(Transform target)
         {
             var lookRotation = Quaternion.LookRotation(target.position - transform.position);

@@ -13,8 +13,9 @@ public class EnemyConfig : ScriptableObject
     public int attackDamage = 10;
     public float attackDistance = 1.5f;
     public EnemyState defaultState;
+    public int score = 100;
 
-    //Agent related 
+    //Agent related
     public float aiUpdateInterval = 0.2f;
     public float acceleration = 8;
     public float angularSpeed = 120;
@@ -26,7 +27,7 @@ public class EnemyConfig : ScriptableObject
     public float radius = 0.5f;
     public float speed = 3f;
     public float stoppingDistance = 0.5f;
-    
+
     //Move related
     public float idleLocRadius = 4f;
     public float viewRadius = 360f;
