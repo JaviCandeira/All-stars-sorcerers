@@ -1,3 +1,4 @@
+using System;
 using Combat;
 using Enemies;
 using UnityEngine;
@@ -25,7 +26,12 @@ using UnityEngine.UI;
         {
             Slider.value = health;
         }
-        
+
+        private void OnDisable()
+        {
+            PlayerPrefs.SetInt("health",CurrentHealth);
+        }
+
         public void Damage(int damagePoints)
         {
             CurrentHealth -= damagePoints;
