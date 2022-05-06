@@ -1,13 +1,14 @@
-using System;
 using Enemies;
 using UnityEngine;
 using UnityEngine.UI;
-[RequireComponent(typeof(Animator))]
-public class Level2Player : MonoBehaviour, IDamagable, IKillable
+
+public class LevelXPlayer : MonoBehaviour, IDamagable, IKillable
 {
-    
+      
     public int maxMana;
     public Slider Slider;
+    [SerializeField] private string onEnableStr;
+    [SerializeField] private string onDisableStr;
     private int CurrentHealth { get; set; }
 
     private void Start()
@@ -22,17 +23,18 @@ public class Level2Player : MonoBehaviour, IDamagable, IKillable
 
     private void OnEnable()
     {
-        CurrentHealth = PlayerPrefs.GetInt("health");
+        CurrentHealth = PlayerPrefs.GetInt(onEnableStr);
         SetHealth(CurrentHealth);
     }
 
     private void OnDisable()
     {
-        PlayerPrefs.SetInt("Health1",CurrentHealth);
+        PlayerPrefs.SetInt(onDisableStr,CurrentHealth);
     }
 
     public void Damage(int damagePoints)
     {
+        
         CurrentHealth -= damagePoints;
         SetHealth(CurrentHealth);
         // Debug.Log("Oh noooo!: " + CurrentHealth);
@@ -50,5 +52,6 @@ public class Level2Player : MonoBehaviour, IDamagable, IKillable
     public void Perish()
     {
         Debug.Log("Dead");
-    }  
+    }   
+        
 }

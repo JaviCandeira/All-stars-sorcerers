@@ -35,7 +35,8 @@ using UnityEngine.UI;
         public void Damage(int damagePoints)
         {
             CurrentHealth -= damagePoints;
-            SetHealth(CurrentHealth);
+            Slider.value = CurrentHealth;
+            
             // Debug.Log("Oh noooo!: " + CurrentHealth);
             if(CurrentHealth <= 0)
             {
