@@ -31,4 +31,8 @@ public class ScoreCounter : MonoBehaviour
       score += val;
       counttext.text = "Score : " + score.ToString();
     }
+
+    public int getScore(){
+      return score;
+    }
 }

@@ -13,7 +13,10 @@ public class Collectible : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.gameObject.CompareTag("Player")) return;
+      GameObject collisionGameObject = other.gameObject;
+
+        if (collisionGameObject.name == "Abe") {
+        //if (!other.gameObject.CompareTag("Player")) return;
         if (collectSound)
         {
             AudioSource.PlayClipAtPoint(collectSound, transform.position);
@@ -21,5 +24,6 @@ public class Collectible : MonoBehaviour
 
         ScoreCounter.Instance.increase(20);
         Destroy(gameObject);
+      }
     }
 }
