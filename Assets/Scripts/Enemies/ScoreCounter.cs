@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,6 +26,11 @@ public class ScoreCounter : MonoBehaviour
     {
         score = 0;
         counttext.text = "Score : " + score.ToString();
+    }
+
+    private void OnDisable()
+    {
+      PlayerPrefs.SetInt("score",score);
     }
 
     public void increase(int val){

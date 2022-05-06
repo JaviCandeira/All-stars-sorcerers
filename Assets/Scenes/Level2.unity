@@ -2816,7 +2816,7 @@ PrefabInstance:
     - target: {fileID: 4550081447252403701, guid: 3168d95744883cb4dbe815466ca43781, type: 3}
       propertyPath: enemyMovement
       value: 
-      objectReference: {fileID: 585569441}
+      objectReference: {fileID: 0}
     - target: {fileID: 6517527154684208942, guid: 3168d95744883cb4dbe815466ca43781, type: 3}
       propertyPath: m_Name
       value: Spectre
@@ -2867,17 +2867,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3168d95744883cb4dbe815466ca43781, type: 3}
---- !u!114 &585569441 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: -2483905361655028280, guid: 3168d95744883cb4dbe815466ca43781, type: 3}
-  m_PrefabInstance: {fileID: 585569440}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c61f7bccf7fcaaf419f3623be80e3214, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!43 &600297422
 Mesh:
   m_ObjectHideFlags: 0
@@ -6938,6 +6927,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1742495067}
   m_CullTransparentMesh: 1
+--- !u!1 &1783588711
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1783588713}
+  - component: {fileID: 1783588712}
+  m_Layer: 0
+  m_Name: ScoreCounter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1783588712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1783588711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc91d9c87db54253b055b94aced9cc5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: 0
+  counttext: {fileID: 1688332313}
+  onEnableStr: score
+  onDisableStr: score1
+--- !u!4 &1783588713
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1783588711}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.376211, y: 24, z: 54.03217}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1809436285
 GameObject:
   m_ObjectHideFlags: 0
@@ -8541,6 +8577,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nOfLevel: Level3
+  minimumScore: 0
+  tpokaymaterial: {fileID: 2100000, guid: 5b165a09fcc134ca6a6c2467abd6e36a, type: 2}
+  renderer: {fileID: 2077885399}
+  particles: {fileID: 6001569605875588276, guid: 945e853dc72a4e34aa416f5e417f1446, type: 3}
 --- !u!135 &2077885398
 SphereCollider:
   m_ObjectHideFlags: 0
