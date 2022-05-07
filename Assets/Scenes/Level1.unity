@@ -6282,7 +6282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nOfLevel: Level2
-  minimumScore: 140
+  minimumScore: 160
   tpokaymaterial: {fileID: 2100000, guid: 5b165a09fcc134ca6a6c2467abd6e36a, type: 2}
   renderer: {fileID: 1468263573}
   particles: {fileID: 6001569605875588276, guid: 945e853dc72a4e34aa416f5e417f1446, type: 3}
