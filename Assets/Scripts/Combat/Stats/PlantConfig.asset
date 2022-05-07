@@ -15,7 +15,7 @@ MonoBehaviour:
   health: 100
   attackCooldown: 1
   attackDamage: 10
-  attackDistance: 2
+  attackDistance: 3
   defaultState: 1
   score: 50
   aiUpdateInterval: 0.2

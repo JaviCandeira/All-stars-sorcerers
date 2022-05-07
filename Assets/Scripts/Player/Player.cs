@@ -11,13 +11,23 @@ using UnityEngine.UI;
         public int maxMana;
         public Slider Slider;
         private int CurrentHealth { get; set; }
-
+        public double CurrentMana { get;  private set; }
         private void Start()
         {
         CurrentHealth = maxHealth;
-        SetMaxHealth(maxHealth);
+        CurrentMana = maxMana;
+        SetStats(maxHealth);
         }
-        public void SetMaxHealth(int health)
+
+        private void Update()
+        {
+            if (CurrentMana < maxMana)
+            {
+                CurrentMana += 1f * Time.deltaTime;
+            }
+        }
+
+        private void SetStats(int health)
         {
             Slider.maxValue = health;
             Slider.value = health;
@@ -37,13 +47,16 @@ using UnityEngine.UI;
             CurrentHealth -= damagePoints;
             Slider.value = CurrentHealth;
             
-            // Debug.Log("Oh noooo!: " + CurrentHealth);
             if(CurrentHealth <= 0)
             {
                 Perish();
             }
         }
 
+        public void ReplenishMana(double manaPoints)
+        {
+            CurrentMana += manaPoints;
+        }
         public Transform GetTransform()
         {
             return transform;
