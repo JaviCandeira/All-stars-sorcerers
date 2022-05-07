@@ -268,6 +268,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Audio Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 6130310258400804001, guid: 13b65c18d53756849bc3c804027de8fb, type: 3}
+      propertyPath: Priority
+      value: 128
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13b65c18d53756849bc3c804027de8fb, type: 3}
 --- !u!1 &80822949
@@ -2096,8 +2100,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 6980532}
-  maxHealth: 100
-  minHealth: 100
   CurrentHealth: 100
   Slider: {fileID: 2131836045}
 --- !u!114 &623505287
