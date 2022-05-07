@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -12,12 +13,18 @@ public class PlayerManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        DontDestroyOnLoad(this.gameObject);
     }
 
     #endregion
     // public GameObject playerPrefab;
     public GameObject player;
+    public int CurrentHealth = 100;
+    public Slider Slider;
+  
+    
 
+    
 }
 
 

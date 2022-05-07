@@ -7,38 +7,17 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Animator))]
     public class Player : MonoBehaviour, IDamagable, IKillable
     {
-        public int maxHealth;
+        
         public int maxMana;
-        public Slider Slider;
-        private int CurrentHealth { get; set; }
-
-        private void Start()
-        {
-        CurrentHealth = maxHealth;
-        SetMaxHealth(maxHealth);
-        }
-        public void SetMaxHealth(int health)
-        {
-            Slider.maxValue = health;
-            Slider.value = health;
-        }
-        public void SetHealth(int health)
-        {
-            Slider.value = health;
-        }
-
-        private void OnDisable()
-        {
-            PlayerPrefs.SetInt("health",CurrentHealth);
-        }
-
+        
+        
         public void Damage(int damagePoints)
         {
-            CurrentHealth -= damagePoints;
-            Slider.value = CurrentHealth;
+            PlayerManager.Instance.CurrentHealth -= damagePoints;
+            PlayerManager.Instance.Slider.value = PlayerManager.Instance.CurrentHealth;
             
             // Debug.Log("Oh noooo!: " + CurrentHealth);
-            if(CurrentHealth <= 0)
+            if(PlayerManager.Instance.CurrentHealth <= 0)
             {
                 Perish();
             }
