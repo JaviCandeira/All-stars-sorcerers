@@ -14,7 +14,7 @@ public class ScoreCounter : MonoBehaviour
     void Awake() {
       if (Instance == null){
         Instance = this;
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
       }
       else {
         Destroy(gameObject);
@@ -28,10 +28,7 @@ public class ScoreCounter : MonoBehaviour
         counttext.text = "Score : " + score.ToString();
     }
 
-    private void OnDisable()
-    {
-      PlayerPrefs.SetInt("score",score);
-    }
+    
 
     public void increase(int val){
       score += val;

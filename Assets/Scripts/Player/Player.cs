@@ -11,6 +11,9 @@ using UnityEngine.UI;
         public int maxMana;
         private int CurrentHealth { get; set; }
         public double CurrentMana { get;  private set; }
+        [SerializeField] private GameObject DeadUI;
+        [SerializeField] private Plane plane;
+        
         private void Start()
         {
         
@@ -23,6 +26,11 @@ using UnityEngine.UI;
             if (CurrentMana < maxMana)
             {
                 CurrentMana += 1f * Time.deltaTime;
+            }
+
+            if (GetTransform().position.y < -15)
+            {
+                Perish();
             }
         }
 
@@ -59,7 +67,12 @@ using UnityEngine.UI;
 
         public void Perish()
         {
+            Destroy(this);
+            Time.timeScale = 0f;
+            DeadUI.SetActive(true);
             Debug.Log("Dead");
         }
+
+        
     }
 
