@@ -11,6 +11,9 @@ using UnityEngine.UI;
         public int maxMana;
         private int CurrentHealth { get; set; }
         public double CurrentMana { get;  private set; }
+        [SerializeField] private GameObject DeadUI;
+        
+        
         private void Start()
         {
         
@@ -59,7 +62,11 @@ using UnityEngine.UI;
 
         public void Perish()
         {
+            Destroy(this);
+            Time.timeScale = 0f;
+            DeadUI.SetActive(true);
             Debug.Log("Dead");
         }
+        
     }
 
