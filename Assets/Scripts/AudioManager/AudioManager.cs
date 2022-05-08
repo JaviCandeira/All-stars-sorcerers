@@ -20,7 +20,9 @@ public class AudioManager : MonoBehaviour
     }
 
     public void PlaySound(AudioClip clip) {
+      if(effectSource.mute == false){
       effectSource.PlayOneShot(clip);
+      }
     }
 
     public void ChangeMasterVolume(float value){
@@ -30,5 +32,9 @@ public class AudioManager : MonoBehaviour
     public void ToggleSounds(){
       musicSource.mute = !musicSource.mute;
       effectSource.mute = !effectSource.mute;
+    }
+
+    public void Update(){
+      Debug.Log(effectSource.mute);
     }
 }

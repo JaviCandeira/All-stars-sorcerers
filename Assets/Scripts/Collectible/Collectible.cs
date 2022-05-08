@@ -18,7 +18,7 @@ public class Collectible : MonoBehaviour
       if (collisionGameObject.name != "Abe") return;
       if (collectSound)
       {
-          AudioSource.PlayClipAtPoint(collectSound, transform.position);
+          AudioManager.Instance.PlaySound(collectSound);
       }
 
       ScoreCounter.Instance.increase(20);
