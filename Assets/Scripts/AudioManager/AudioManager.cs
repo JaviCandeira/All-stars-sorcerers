@@ -33,8 +33,4 @@ public class AudioManager : MonoBehaviour
       musicSource.mute = !musicSource.mute;
       effectSource.mute = !effectSource.mute;
     }
-
-    public void Update(){
-      Debug.Log(effectSource.mute);
-    }
 }
