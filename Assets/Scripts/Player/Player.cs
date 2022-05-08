@@ -12,11 +12,7 @@ using UnityEngine.UI;
         private int CurrentHealth { get; set; }
         public double CurrentMana { get;  private set; }
         [SerializeField] private GameObject DeadUI;
-<<<<<<< HEAD
-        [SerializeField] private Plane plane;
-=======
-        
->>>>>>> main
+
         
         private void Start()
         {
@@ -76,10 +72,6 @@ using UnityEngine.UI;
             DeadUI.SetActive(true);
             Debug.Log("Dead");
         }
-<<<<<<< HEAD
 
-=======
->>>>>>> main
-        
     }
 
