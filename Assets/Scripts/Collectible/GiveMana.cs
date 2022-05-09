@@ -11,7 +11,7 @@ public class GiveMana : MonoBehaviour
     {
         var collisionGameObject = other.gameObject;
         var player = collisionGameObject.GetComponent<Player>();
-        var manaDiff = player.maxMana - player.CurrentMana;
+        var manaDiff = player.maxMana - PlayerManager.Instance.CurrentMana;
         if (collisionGameObject.name != "Abe") return;
         if (manaDiff > amount)
         {

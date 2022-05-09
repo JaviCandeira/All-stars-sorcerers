@@ -10,22 +10,22 @@ using UnityEngine.UI;
         
         public int maxMana;
         private int CurrentHealth { get; set; }
-        public double CurrentMana { get;  private set; }
         [SerializeField] private GameObject DeadUI;
 
         
         private void Start()
         {
         
-        CurrentMana = maxMana;
+            PlayerManager.Instance.CurrentMana = maxMana;
         //SetStats(maxHealth);
         }
 
         private void Update()
         {
-            if (CurrentMana < maxMana)
+            if (PlayerManager.Instance.CurrentMana < maxMana)
             {
-                CurrentMana += 1f * Time.deltaTime;
+                PlayerManager.Instance.CurrentMana += 1f * Time.deltaTime;
+                PlayerManager.Instance.manaSlider.value = (float) PlayerManager.Instance.CurrentMana;
             }
 
             if (GetTransform().position.y < -15)
@@ -55,10 +55,15 @@ using UnityEngine.UI;
                 Perish();
             }
         }
-
+        public void depleteMana(double manaPoints)
+        {
+            PlayerManager.Instance.CurrentMana -= manaPoints;
+            PlayerManager.Instance.manaSlider.value = (float) PlayerManager.Instance.CurrentMana;
+        }
         public void ReplenishMana(double manaPoints)
         {
-            CurrentMana += manaPoints;
+            PlayerManager.Instance.CurrentMana += manaPoints;
+            PlayerManager.Instance.manaSlider.value = (float) PlayerManager.Instance.CurrentMana;
         }
         public Transform GetTransform()
         {

@@ -12,8 +12,10 @@ public class PlayerManager : MonoBehaviour
 
     public static PlayerManager Instance;
     public int CurrentHealth = 100;
+    public double CurrentMana = 50;
     public Slider Slider;
     [SerializeField] private GameObject DeadUI;
+    public Slider manaSlider;
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
