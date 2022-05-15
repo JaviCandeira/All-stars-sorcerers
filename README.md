@@ -9,6 +9,6 @@ Project made for the Game Development Course
 * Player : https://www.mixamo.com/#/?page=1&query=Abe&type=Character
 
 # Link for the video
-https://www.youtube.com/watch?v=xZj0n4Brhuk
+https://youtu.be/kQhz-Fv05Ec
 # Link for the Webgl(not working)
 https://javicandeira.github.io/All-stars-sorcerers/index
