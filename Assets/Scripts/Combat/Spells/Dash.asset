@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 501286294a3588046aafe2ba83c46860, type: 3}
   m_Name: Dash
   m_EditorClassIdentifier: 
-  name: Dash
   cooldown: 3
   activeFor: 0.5
-  dashVelocity: 1500
+  manaCost: 0
+  lifeTime: 0
+  dashVelocity: 150

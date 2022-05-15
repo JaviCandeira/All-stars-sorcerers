@@ -8,10 +8,9 @@ using UnityEngine.UI;
     public class Player : MonoBehaviour, IDamagable, IKillable
     {
         
-        public int maxMana;
+        public int maxMana = 50;
         private int CurrentHealth { get; set; }
-        [SerializeField] private GameObject DeadUI;
-
+        
         
         private void Start()
         {
@@ -28,6 +27,11 @@ using UnityEngine.UI;
                 PlayerManager.Instance.manaSlider.value = (float) PlayerManager.Instance.CurrentMana;
             }
 
+            if (ScoreCounter.Instance.score == 900)
+            {
+                Time.timeScale = 0f;
+                PlayerManager.Instance.WinUI.SetActive(true);
+            }
             if (GetTransform().position.y < -15)
             {
                 Perish();
@@ -74,7 +78,7 @@ using UnityEngine.UI;
         {
             Destroy(this);
             Time.timeScale = 0f;
-            DeadUI.SetActive(true);
+            PlayerManager.Instance.DeadUI.SetActive(true);
             Debug.Log("Dead");
         }
 

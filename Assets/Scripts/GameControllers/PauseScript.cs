@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace GameControllers
 {
@@ -8,7 +9,7 @@ namespace GameControllers
         public static bool IsPaused = false;
         public GameObject pauseMenu;
         public GameObject settingsMenu;
-        
+        public GameObject DeadUI;
         private void Update()
         {
             if (!Input.GetKeyDown(KeyCode.Escape)) return;
@@ -20,7 +21,6 @@ namespace GameControllers
             {
                 PauseGame();
             }
-            
         }
 
         public void PauseGame()
@@ -55,7 +55,15 @@ namespace GameControllers
             pauseMenu.SetActive(true);
             
         }
-        
+        public void RestartGame()
+        {
+            Destroy(PlayerManager.Instance.player);
+            SceneManager.LoadScene("Level1");
+            DeadUI.SetActive(false);
+            Time.timeScale = 1f;
+            ScoreCounter.Instance.score = 0;
+            ScoreCounter.Instance.counttext.text = "Score : " + ScoreCounter.Instance.score.ToString();
+        }
         
     }
 }

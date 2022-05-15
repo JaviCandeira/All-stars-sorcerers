@@ -14,7 +14,8 @@ public class PlayerManager : MonoBehaviour
     public int CurrentHealth = 100;
     public double CurrentMana = 50;
     public Slider Slider;
-    [SerializeField] private GameObject DeadUI;
+    public  GameObject DeadUI;
+    public GameObject WinUI;
     public Slider manaSlider;
     private void Awake()
     {
@@ -33,6 +34,8 @@ public class PlayerManager : MonoBehaviour
         Time.timeScale = 1f;
         ScoreCounter.Instance.score = 0;
         ScoreCounter.Instance.counttext.text = "Score : " + ScoreCounter.Instance.score.ToString();
+        Console.WriteLine("Button Pressed");
+        WinUI.SetActive(false);
     }
 }
 

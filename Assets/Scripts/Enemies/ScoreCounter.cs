@@ -10,8 +10,7 @@ public class ScoreCounter : MonoBehaviour
   public static ScoreCounter Instance;
   public int score;
   public TextMeshProUGUI counttext;
-
-    void Awake() {
+  void Awake() {
       if (Instance == null){
         Instance = this;
         //DontDestroyOnLoad(gameObject);
@@ -27,7 +26,7 @@ public class ScoreCounter : MonoBehaviour
         score = 0;
         counttext.text = "Score : " + score.ToString();
     }
-
+    
     
 
     public void increase(int val){
