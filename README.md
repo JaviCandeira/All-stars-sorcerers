@@ -8,7 +8,7 @@ Project made for the Game Development Course
 * Spells: https://assetstore.unity.com/packages/vfx/particles/spells/100-special-skills-effects-pack-171146
 * Player : https://www.mixamo.com/#/?page=1&query=Abe&type=Character
 
-#Link for the video
-
-#Link for the Webgl(not working)
+# Link for the video
+https://www.youtube.com/watch?v=xZj0n4Brhuk
+# Link for the Webgl(not working)
 https://javicandeira.github.io/All-stars-sorcerers/index
